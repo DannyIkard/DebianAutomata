@@ -1,0 +1,19 @@
+#!/bin/bash
+. ../SharedLib
+
+SudoRequired
+USER=$(whoami);
+
+SetupSteamCMD() {
+  #-----------If steamcmd.sh doesn't exist, download it --------------------
+  if [ ! -f /home/$USER/steamcmd/steamcmd.sh ]; then
+    Separator "_"
+    EchoBold "  Install SteamCMD"
+    mkdir ~/steamcmd 2>/dev/null
+    cd ~/steamcmd
+    wget http://media.steampowered.com/installer/steamcmd_linux.tar.gz
+    tar zxvf steamcmd_linux.tar.gz 1>/dev/null 2>/dev/null
+    chmod +x steamcmd.sh
+    sleep 2
+  fi
+};
